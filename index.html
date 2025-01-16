@@ -1,0 +1,198 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK R</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            background-color: #f0f4f8;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container h1 {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+
+        .link-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .link-list li {
+            margin: 15px 0;
+        }
+
+        .link-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            background: #f0f4f8;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            color: #4a4a4a;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-list a:hover {
+            background: #e0eaff;
+            border-color: #0056b3;
+            color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-icon {
+            font-size: 2rem;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow-icon.animate {
+            transform: rotate(360deg);
+        }
+
+        .page-transition {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            animation: pageFlip 1s ease forwards;
+            display: none;
+        }
+
+        @keyframes pageFlip {
+            0% {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            100% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 1.5rem;
+            }
+
+            .link-list a {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            .arrow-icon {
+                font-size: 1.5rem;
+            }
+
+            .profile-photo {
+                width: 90px;
+                height: 90px;
+                top: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-photo">
+            <img src="./assets/img/foto.jpeg" alt="Profile Photo">
+        </div>
+        <h1>MEDSOS</h1>
+        <ul class="link-list">
+            <li><a href="https://twitter.com/Rnlzrd" target="_blank"><i class="fab fa-twitter"></i>TWITTER <span>&rarr;</span></a></li>
+            <li><a href="https://www.youtube.com/@rifdahtulaisya" target="_blank"><i class="fab fa-youtube"></i>YOUTUBE <span>&rarr;</span></a></li>
+            <li><a href="https://www.instagram.com/rnlzrdpixel.art/" target="_blank"><i class="fab fa-instagram"></i>INSTAGRAM <span>&rarr;</span></a></li>
+            <li><a href="https://bsky.app/profile/rnlzrd.bsky.social" target="_blank"><i class="fab fa-bluesky"></i>BLUE SKY <span>&rarr;</span></a></li>
+            <li><a href="https://medium.com/@rnlzrd" target="_blank"><i class="fab fa-medium"></i>MEDIUM <span>&rarr;</span></a></li>
+            <li><a href="https://www.wattpad.com/user/Rnlzrd" target="_blank">
+                <i class="fa-solid fa-book"></i>WATTPAD <span>&rarr;</span></a></li>
+        </ul>
+        <i class="fa-solid fa-arrow-left arrow-icon" id="arrow"></i>
+        <i class="fa-solid fa-arrow-right arrow-icon" id="arrow-next"></i>
+    </div>
+    <div class="page-transition" id="transition"></div>
+
+    <script>
+        const arrowIcon = document.getElementById('arrow');
+        const arrowNextIcon = document.getElementById('arrow-next');
+        const pageTransition = document.getElementById('transition');
+
+        arrowIcon.addEventListener('click', () => {
+            arrowIcon.classList.add('animate');
+            pageTransition.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'code.html';
+            }, 1000);
+        });
+
+        arrowNextIcon.addEventListener('click', () => {
+            arrowNextIcon.classList.add('animate');
+            pageTransition.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'website.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

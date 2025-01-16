@@ -1,0 +1,197 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK R</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8bbd0, #f06292); /* Pink gradient background */
+            color: #333;
+        }
+
+        .container {
+            background: #fce4ec; /* Light pink background */
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            background-color: #f8bbd0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container h1 {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #d81b60; /* Pink text color */
+        }
+
+        .link-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .link-list li {
+            margin: 15px 0;
+        }
+
+        .link-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            background: #f8bbd0; /* Pink button background */
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            color: #d81b60; /* Pink text color */
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-list a:hover {
+            background: #f06292; /* Darker pink button background on hover */
+            border-color: #c2185b;
+            color: #c2185b; /* Darker pink text color on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-icon {
+            font-size: 2rem;
+            color: #d81b60; /* Pink arrow icon color */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow-icon.animate {
+            transform: rotate(360deg);
+        }
+
+        .page-transition {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            animation: pageFlip 1s ease forwards;
+            display: none;
+        }
+
+        @keyframes pageFlip {
+            0% {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            100% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 1.5rem;
+            }
+
+            .link-list a {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            .arrow-icon {
+                font-size: 1.5rem;
+            }
+
+            .profile-photo {
+                width: 90px;
+                height: 90px;
+                top: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-photo">
+            <img src="./assets/img/foto.jpeg" alt="Profile Photo">
+        </div>
+        <h1>WEBSITE</h1>
+        <ul class="link-list">
+            <li><a href="https://rifdahtulaisya.csgeuno.tech/" target="_blank"><i class="fa-solid fa-house-chimney"></i>PORTOFOLIO 2024<span>&rarr;</span></a></li>
+            <li><a href="https://portofolio-rifdah-2023.vercel.app/" target="_blank"><i class="fa-solid fa-house"></i>PORTOFOLIO 2023<span>&rarr;</span></a></li>
+            <li><a href="https://happy-birthday-milda.vercel.app/" target="_blank"><i class="fa-solid fa-cake-candles"></i>BIRTHDAY MILDA <span>&rarr;</span></a></li>
+            <li><a href="https://happy-birthday-safira.vercel.app/" target="_blank"><i class="fa-solid fa-cake-candles"></i>BIRTHDAY SAFIRA <span>&rarr;</span></a></li>
+            <li><a href="https://birthday-vega.vercel.app/" target="_blank"><i class="fa-solid fa-cake-candles"></i>BIRTHDAY VEGA <span>&rarr;</span></a></li>
+            <li><a href="https://orbit-ten-iota.vercel.app/" target="_blank"><i class="fa-solid fa-earth-asia"></i>ORBIT <span>&rarr;</span></a></li>
+        </ul>
+        <i class="fa-solid fa-arrow-left arrow-icon" id="arrow"></i>
+        <i class="fa-solid fa-arrow-right arrow-icon" id="arrow-next"></i>
+    </div>
+    <div class="page-transition" id="transition"></div>
+
+    <script>
+        const arrowIcon = document.getElementById('arrow');
+        const arrowNextIcon = document.getElementById('arrow-next');
+        const pageTransition = document.getElementById('transition');
+
+        arrowIcon.addEventListener('click', () => {
+            arrowIcon.classList.add('animate');
+            pageTransition.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        });
+
+        arrowNextIcon.addEventListener('click', () => {
+            arrowNextIcon.classList.add('animate');
+            pageTransition.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'code.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
